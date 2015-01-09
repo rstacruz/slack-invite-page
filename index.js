@@ -8,6 +8,7 @@ var request = require('superagent');
 var path = require('path');
 var env = process.env;
 var app = require('express')();
+var f = require('util').format;
 
 /*
  * middleware
@@ -78,18 +79,24 @@ function sendInvite (person, fn) {
   if (!person.email.match(/^.+@.+$/))
     return fn(new Error("Invalid: email sucks"));
 
+  var text = f("*%s %s* (%s) requested an invite",
+    person.first, person.last, person.email);
+
   var payload = {
-    text: "An invite request was received",
+    text: text,
     username: env.BOT_NAME,
     channel: env.BOT_CHANNEL,
     icon_emoji: env.BOT_EMOJI,
     attachments: [{
-      fallback: [ person.email, person.first, person.last ].join(" / "),
+      fallback: text,
       color: 'good',
       fields: [
-        { title: 'First name', value: person.first, short: false },
-        { title: 'Last name',  value: person.last, short: false },
-        { title: 'Email',      value: person.email, short: false },
+        { title: 'Email',
+          value: person.email,
+          short: true },
+        { title: 'First / last name',
+          value: [ person.first, person.last ].join(" / "),
+          short: true },
       ]
     }]
   };
