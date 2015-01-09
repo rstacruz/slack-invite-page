@@ -84,7 +84,7 @@ function sendInvite (person, fn) {
   var fallback = f("%s %s (%s) requested an invite",
     person.first, person.last, person.email);
 
-  var text = f("*%s %s* requested an invite. *<%s|Send ›>*",
+  var text = f("*%s %s* requested an invite - <%s|Send ›>",
     person.first, person.last, url);
 
   var payload = {
