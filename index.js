@@ -81,6 +81,9 @@ function sendInvite (person, fn) {
 
   var url = f("https://%s.slack.com/admin/invites/full", env.SLACK_TEAM);
 
+  var fallback = f("%s %s (%s) requested an invite",
+    person.first, person.last, person.email);
+
   var text = f("*%s %s* requested an invite. *<%s|Send ›>*",
     person.first, person.last, url);
 
@@ -90,13 +93,13 @@ function sendInvite (person, fn) {
     channel: env.BOT_CHANNEL,
     icon_emoji: env.BOT_EMOJI,
     attachments: [{
-      fallback: text,
+      fallback: fallback,
       color: 'good',
       fields: [
         { title: 'Email',
           value: person.email,
           short: true },
-        { title: 'First / last name',
+        { title: 'First / Last',
           value: [ person.first, person.last ].join(" / "),
           short: true },
       ]
