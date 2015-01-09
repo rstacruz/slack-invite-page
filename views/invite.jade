@@ -1,0 +1,17 @@
+extends layout
+
+block head
+  title ok
+
+block content
+  .invite-result
+    - if (success)
+      p Thanks #{person.first}, check your email soon.
+
+    - else
+      p Uh oh, something went wrong. Try again?
+
+      - if (error && error.message)
+        p msg: #{error.message}
+      - else if (error)
+        p err: #{error}

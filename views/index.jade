@@ -1,0 +1,13 @@
+extends layout
+
+block head
+  title phackers slack invite
+
+block content
+  .invite-form
+    h1= welcome
+    form(method='post', action='/invite')
+      input(type='text', name='email', placeholder='email')
+      input(type='text', name='first', placeholder='first name')
+      input(type='text', name='last', placeholder='last name')
+      button(type='submit') add me

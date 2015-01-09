@@ -1,0 +1,71 @@
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,400');
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  background: #fff;
+}
+
+.invite-result,
+.invite-form {
+  font-size: 20px;
+  max-width: 400px;
+  padding: 40px;
+  background: #fff;
+  margin: auto;
+}
+
+.invite-form h1 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: #444;
+}
+
+.invite-form input,
+.invite-form button {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.invite-form input {
+  font-size: 1em;
+  padding: 10px;
+}
+
+.invite-form button {
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  background: white;
+  color: dodgerblue;
+  font-weight: bold;
+  font-size: 0.6em;
+  border: solid 1px dodgerblue;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invite-form button:focus,
+.invite-form button:hover {
+  background: dodgerblue;
+  color: white;
+}
