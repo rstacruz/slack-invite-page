@@ -79,8 +79,10 @@ function sendInvite (person, fn) {
   if (!person.email.match(/^.+@.+$/))
     return fn(new Error("Invalid: email sucks"));
 
-  var text = f("*%s %s* (%s) requested an invite",
-    person.first, person.last, person.email);
+  var url = f("https://%s.slack.com/admin/invites/full", env.SLACK_TEAM);
+
+  var text = f("*%s %s* requested an invite. *<%s|Send ›>*",
+    person.first, person.last, url);
 
   var payload = {
     text: text,
