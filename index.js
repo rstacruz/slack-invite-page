@@ -96,12 +96,9 @@ function sendInvite (person, fn) {
       fallback: fallback,
       color: 'good',
       fields: [
-        { title: 'Email',
-          value: person.email,
-          short: true },
-        { title: 'First / Last',
-          value: [ person.first, person.last ].join(" / "),
-          short: true },
+        { title: '',
+          value: f("%s %s <%s>", person.first, person.last, person.email),
+          short: false }
       ]
     }]
   };
