@@ -4,6 +4,7 @@ require('dotenv').load();
  * requires
  */
 
+var gravatar = require('gravatar');
 var request = require('superagent');
 var path = require('path');
 var env = process.env;
@@ -62,6 +63,9 @@ var server = app.listen(process.env.PORT || 3000, function () {
 
 /**
  * send an invite
+ * See: https://api.slack.com/docs/attachments
+ * See: https://api.slack.com/docs/formatting
+ * See: https://my.slack.com/services/new/incoming-webhook
  *
  *     sendInvite({ first: "Rico", last: "SC", email: "r@s" });
  */
@@ -87,17 +91,20 @@ function sendInvite (person, fn) {
   var text = f("*%s %s* requested an invite - <%s|Send ›>",
     person.first, person.last, url);
 
+  var icon = gravatar.url(person.email, {s: '96'});
+
   var payload = {
     text: text,
     username: env.BOT_NAME,
     channel: env.BOT_CHANNEL,
-    icon_emoji: env.BOT_EMOJI,
+    // icon_emoji: env.BOT_EMOJI,
+    icon_url: icon,
     attachments: [{
       fallback: fallback,
       color: 'good',
       fields: [
         { title: '',
-          value: f("%s %s <%s>", person.first, person.last, person.email),
+          value: f("%s %s <%s>", person.first, person.last, person.email.replace(/\+/g, '%2B')),
           short: false }
       ]
     }]
