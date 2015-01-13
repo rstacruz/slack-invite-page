@@ -31,7 +31,7 @@ app.post('/invite', function (req, res) {
   var person = {
     first: req.body.first,
     last:  req.body.last,
-    email: req.body.email
+    email: req.body.email.replace(/ /g, '+')
   };
 
   res.locals.person = person;
