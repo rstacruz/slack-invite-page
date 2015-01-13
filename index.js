@@ -91,7 +91,7 @@ function sendInvite (person, fn) {
   var text = f("*%s %s* requested an invite - <%s|Send ›>",
     person.first, person.last, url);
 
-  var icon = gravatar.url(person.email, {s: '96'});
+  var icon = gravatar.url(person.email, {s: '96'}, true);
 
   var payload = {
     text: text,
