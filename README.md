@@ -1,3 +1,7 @@
+# Deprecated
+
+Use this instead: https://github.com/rauchg/slackin
+
 ### Slack integration
 
 Configure an "Incoming Webhook" (team admin > integrations > incoming webhooks)
